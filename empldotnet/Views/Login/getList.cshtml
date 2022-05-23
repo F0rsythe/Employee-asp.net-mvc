@@ -1,0 +1,75 @@
+﻿
+@model IEnumerable<empldotnet.Models.Employee>
+
+
+@{
+    ViewBag.Title = "Users";
+
+}
+<style>
+    .status1 {
+        padding-right: 17px;
+    }
+
+    .status {
+        border-radius: 3px;
+    }
+</style>
+<h2>getList</h2>
+
+@using (Html.BeginForm())
+{
+
+    @Html.Label("Filter By: ", htmlAttributes: new { @class = "status1"})
+    @Html.DropDownList("val", new List<SelectListItem>
+{ new SelectListItem{Text="User", Value="User"},
+new SelectListItem{Text="Admin", Value="Admin"}}, "Please select a status...", new { @class = "status" })
+    <br />
+    <input type="submit" value="Filter" />
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOB)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Department)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DOB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Edit Role", "changeRole", new { id = item.Id }) 
+
+            </td>
+        </tr>
+    }
+
+</table>

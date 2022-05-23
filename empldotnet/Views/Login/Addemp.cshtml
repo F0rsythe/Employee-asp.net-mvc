@@ -1,0 +1,120 @@
+﻿@model empldotnet.Models.Employee
+
+@{
+    ViewBag.Title = "Add Employee";
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="~/Content/themes/base/jquery-ui.min.css" />
+<style>
+    .first1 {
+        padding-right: 23px;
+    }
+
+    .first {
+        border-radius: 5px;
+    }
+
+    .last1 {
+        padding-right: 23px;
+    }
+
+    .last {
+        border-radius: 5px;
+    }
+
+    .date1 {
+        padding-right: 60px;
+    }
+
+    #date {
+        border-radius: 5px;
+    }
+
+    .dep1 {
+        padding-right: 11px;
+    }
+
+    .dep {
+        border-radius: 5px;
+    }
+
+    .status1 {
+        padding-right: 44px;
+    }
+
+    .status {
+        border-radius: 3px;
+    }
+    .List
+    {
+        padding-left: 10px;
+    }
+</style>
+
+<h2>Add Employee</h2>
+@using (Html.BeginForm("AddEmp", "Login", FormMethod.Post, htmlAttributes: new { autocomplete = "off" }))
+{
+    @Html.LabelFor(x => x.FirstName, htmlAttributes: new { @class = "first1" })
+    @Html.TextBoxFor(x => x.FirstName, htmlAttributes: new { @class = "first", autocomplete = "off" })
+    <br />
+    <br />
+
+    @Html.LabelFor(x => x.LastName, htmlAttributes: new { @class = "last1" })
+    @Html.TextBoxFor(x => x.LastName, htmlAttributes: new { @class = "last", autocomplete = "off" })
+    <br />
+    <br />
+
+
+    @Html.LabelFor(x => x.DOB, htmlAttributes: new { @class = "date1" })
+    @Html.TextBoxFor(x => x.DOB, htmlAttributes: new { @id = "date", @class = "datepicker", autocomplete = "off" })
+    <br />
+    <br />
+
+    @Html.LabelFor(x => x.Department, htmlAttributes: new { @class = "dep1" })
+    @Html.TextBoxFor(x => x.Department, htmlAttributes: new { @class = "dep", autocomplete = "off" })
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Status, htmlAttributes: new { @class = "status1" })
+    @Html.DropDownListFor(x => x.Status, new List<SelectListItem>
+{ new SelectListItem{Text="User", Value="User"},
+new SelectListItem{Text="Admin", Value="Admin"}}, "Please select a status...", new { @class = "status" })
+
+    <br />
+    <br />
+
+    <input type="submit" value="ADD" />
+    <br />
+    <br />
+}
+
+@if (ViewBag.message != "Different")
+{
+    <script>alert("@ViewBag.message")</script>
+}
+<link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="~/Scripts/jquery-ui-1.13.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd-mm-yy'
+            });
+
+        });
+    </script>
+}
+
+
+
+
+
+<footer>
+    @Html.ActionLink("Search", "Search", "login")
+    @Html.ActionLink("List", "getList", "login", htmlAttributes: new {@class = "List"})
+</footer>

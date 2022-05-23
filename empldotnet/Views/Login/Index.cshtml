@@ -1,0 +1,22 @@
+﻿@model empldotnet.Models.User
+@{
+    ViewBag.Title = "Login";
+}
+<h2>Login</h2>
+<br />
+@using (Html.BeginForm("Index", "Login", FormMethod.Post))
+{
+    @Html.LabelFor(x => x.Username)
+    @Html.TextBoxFor(x => x.Username)
+    <br />
+    @Html.LabelFor(x => x.Password)
+    @Html.PasswordFor(x => x.Password)
+    <br />
+    <br />
+    <input type="submit" value="LOGIN" />
+}
+
+@if (ViewBag.message == "User can't add employee")
+{
+    <script>alert("@ViewBag.message")</script>
+}

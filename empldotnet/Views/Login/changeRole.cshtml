@@ -1,0 +1,38 @@
+﻿@model empldotnet.Models.Employee
+@{
+    ViewBag.Title = "changeRole";
+}
+
+<h2>changeRole</h2>
+
+@using (Html.BeginForm())
+{
+
+    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.Department, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.EditorFor(model => model.Department, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Department, "", new { @class = "text-danger" })
+
+    @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+
+    @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+
+    <input type="submit" value="Save" class="btn btn-default" />
+}
+<br />
+<br />
+@Html.ActionLink("Back to List", "getList")

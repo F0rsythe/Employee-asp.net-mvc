@@ -1,0 +1,59 @@
+﻿@model empldotnet.Models.User
+@{
+    ViewBag.Title = "usr";
+}
+
+<h2>Hello @TempData["Firstname"]</h2>
+
+<style>
+    .lab {
+        border-radius: 3px;
+    }
+
+    .con1 {
+        padding-right: 6px;
+    }
+
+    .lab1 {
+        padding-right: 63px;
+    }
+
+    .con {
+        border-radius: 3px;
+    }
+
+    h2 {
+        color: mediumturquoise;
+    }
+
+    us1 {
+        padding-right: 63pxpx;
+    }
+
+    us {
+        border-radius: 3px;
+    }
+</style>
+
+@using (Html.BeginForm("usr", "Login", FormMethod.Post, htmlAttributes: new { autocomplete = "off" }))
+{
+
+    @Html.LabelFor(x => x.Username, htmlAttributes: new { @class = "us1" })
+    @Html.TextBoxFor(x => x.Username, htmlAttributes: new { @class = "us" })
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Password, htmlAttributes: new { @class = "lab1" })
+    @Html.PasswordFor(x => x.Password, htmlAttributes: new { @class = "lab" })
+    <br />
+    <br />
+    @Html.Label("Confirm Password", new { @class = "con1" })
+    @Html.Password("passwordconfirm", null, new { @class = "con" })
+    <br />
+    <br />
+    <input type="submit" value="CONFIRM" />
+}
+
+@if (ViewBag.message != "Different")
+{
+    <script>alert("@ViewBag.message")</script>
+}
